@@ -1,5 +1,5 @@
 import { bfs, dfs } from './algorithms';
-import { findEndPoints, findStartPoint, generateLabyrinth } from './initialization';
+import { generateLabyrinth, getEndPoints, getStartPoint } from './initialization';
 import { Labyrinth, Point } from './types';
 var clc = require("cli-color");
 
@@ -31,8 +31,8 @@ function printLabytinth(labyrinth: Labyrinth, path: Point[] | null) {
 }
 
 const labyrinth = generateLabyrinth();
-const endPoints = findEndPoints(labyrinth)
-const startPoint = findStartPoint(labyrinth);
+const endPoints = getEndPoints(labyrinth)
+const startPoint = getStartPoint(labyrinth);
 
 let exitPaths: Point[][] = [];
 let shortestPathLength: number | undefined = undefined;

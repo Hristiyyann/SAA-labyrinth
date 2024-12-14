@@ -29,20 +29,19 @@ export function bfs(labyrinth: Labyrinth, start: Point, end: Point): Point[] | n
 
     while (queue.length > 0) {
         const [row, col] = queue.shift()!;
-
         if (row === end[0] && col === end[1]) return getPath(end, parent);
 
         for (const [dr, dc] of directions) {
-            const next: Point = [row + dr, col + dc];
+            const neighbourPoint: Point = [row + dr, col + dc];
 
             if (
-                isInsideLabyrinth(next) &&
-                labyrinth[next[0]][next[1]] === 0 &&
-                !visited[next[0]][next[1]]
+                isInsideLabyrinth(neighbourPoint) &&
+                labyrinth[neighbourPoint[0]][neighbourPoint[1]] === 0 &&
+                !visited[neighbourPoint[0]][neighbourPoint[1]]
             ) {
-                visited[next[0]][next[1]] = true;
-                queue.push(next);
-                parent.set(next.toString(), [row, col]);
+                visited[neighbourPoint[0]][neighbourPoint[1]] = true;
+                queue.push(neighbourPoint);
+                parent.set(neighbourPoint.toString(), [row, col]);
             }
         }
     }
@@ -62,16 +61,16 @@ export function dfs(labyrinth: Labyrinth, start: Point, end: Point) {
         if (row === end[0] && col === end[1]) return getPath(end, parent);
 
         for (const [dr, dc] of directions) {
-            const next: Point = [row + dr, col + dc];
+            const neighbourPoint: Point = [row + dr, col + dc];
 
             if (
-                isInsideLabyrinth(next) &&
-                labyrinth[next[0]][next[1]] === 0 &&
-                !visited[next[0]][next[1]]
+                isInsideLabyrinth(neighbourPoint) &&
+                labyrinth[neighbourPoint[0]][neighbourPoint[1]] === 0 &&
+                !visited[neighbourPoint[0]][neighbourPoint[1]]
             ) {
-                visited[next[0]][next[1]] = true;
-                stack.push(next);
-                parent.set(next.toString(), [row, col]);
+                visited[neighbourPoint[0]][neighbourPoint[1]] = true;
+                stack.push(neighbourPoint);
+                parent.set(neighbourPoint.toString(), [row, col]);
             }
         }
     }

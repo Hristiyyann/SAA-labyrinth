@@ -13,18 +13,18 @@ export function generateLabyrinth() {
     return labyrinth;
 }
 
-export function findStartPoint(labyrinth: Labyrinth): Point {
+export function getStartPoint(labyrinth: Labyrinth): Point {
     let point: Point;
 
     do {
         point = [getRandomInnerCell(), getRandomInnerCell()];
     } 
-    while (labyrinth[point[0]][point[1]] !== 0 );
+    while (labyrinth[point[0]][point[1]] !== 0);
 
     return point;
 }
 
-export function findEndPoints(labyrinth: Labyrinth): Point[] {
+export function getEndPoints(labyrinth: Labyrinth): Point[] {
     const SIZE = labyrinth.length;
     const borderPoints: Point[] = [];
 
